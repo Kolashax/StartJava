@@ -1,6 +1,5 @@
 package com.startjava.lesson2_3.calculator;
 
-
 import java.util.Scanner;
 
 public class Calculator {
@@ -48,4 +47,3 @@ public class Calculator {
         System.out.println("Результат мат.операции: " + result + "\n");
     }
 }
-
