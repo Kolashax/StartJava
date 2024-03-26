@@ -47,11 +47,11 @@ public class RpsGameFormatting {
 
     public static void showSign(String sign) throws InterruptedException {
         for (int i = 0; i < 5; i++) {
-            System.out.println(ROCK);
+            System.out.print(ROCK + "\r");
             Thread.sleep(100);
-            System.out.println(SCISSORS);
+            System.out.print(SCISSORS + "\r");
             Thread.sleep(100);
-            System.out.println(PAPER);
+            System.out.println(PAPER + "\r");
             Thread.sleep(100);
         }
         System.out.println("\n" + sign);
