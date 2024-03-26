@@ -19,8 +19,8 @@ public class RpsGameFormatting {
         String sign = defineSign(position);
         showSign(sign);
 
-        int position2 = generatePosition(name2, random);
-        String sign2 = defineSign(position2);
+        position = generatePosition(name2, random);
+        String sign2 = defineSign(position);
         showSign(sign2);
         defineWinner(name1, sign, name2, sign2);
     }
