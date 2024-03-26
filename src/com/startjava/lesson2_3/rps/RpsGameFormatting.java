@@ -51,7 +51,7 @@ public class RpsGameFormatting {
             Thread.sleep(100);
             System.out.print(SCISSORS + "\r");
             Thread.sleep(100);
-            System.out.println(PAPER + "\r");
+            System.out.print(PAPER + "\r");
             Thread.sleep(100);
         }
         System.out.println("\n" + sign);
