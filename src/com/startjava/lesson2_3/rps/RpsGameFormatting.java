@@ -22,7 +22,7 @@ public class RpsGameFormatting {
         int position2 = generatePosition(name2, random);
         String sign2 = defineSign(position2);
         showSign(sign2);
-        defineWinner(name1,sign,name2,sign2);
+        defineWinner(name1, sign, name2, sign2);
     }
 
     public static String inputName(Scanner scanner) {
