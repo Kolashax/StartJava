@@ -1,7 +1,5 @@
 package com.startjava.lesson1.final_;
 
-import java.util.Random;
-
 public class RpsGameFormatting {
     public static void main(String[] args) throws InterruptedException {
         String rock ="✊";
@@ -10,7 +8,7 @@ public class RpsGameFormatting {
 
         String name1 = "Nic";
         Random random = new Random();
-        int position1 = random.nextInt(1,100);
+        int position1 = (int) (Math.random() * 100) + 1;
         String sign1 = rock;
 
         if (position1 > 66) {
@@ -31,7 +29,7 @@ public class RpsGameFormatting {
         System.out.println("\n" + sign1 + "\n");
 
         String name2 = "Jesse";
-        int position2 = random.nextInt(1,100);
+        int position2 = (int) (Math.random() * 100) + 1;
         String sign2 = rock;
 
         if (position2 > 66) {
