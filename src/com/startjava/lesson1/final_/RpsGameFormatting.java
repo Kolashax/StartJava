@@ -7,7 +7,6 @@ public class RpsGameFormatting {
         String paper = "✋" ;
 
         String name1 = "Nic";
-        Random random = new Random();
         int position1 = (int) (Math.random() * 100) + 1;
         String sign1 = rock;
 
