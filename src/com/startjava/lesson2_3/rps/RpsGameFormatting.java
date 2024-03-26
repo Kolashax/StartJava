@@ -58,7 +58,6 @@ public class RpsGameFormatting {
     }
 
     public static void defineWinner(String name, String sign, String name2, String sign2) {
-
         boolean isSign1Equal = sign.equals(ROCK) && sign2.equals(SCISSORS) ||
                 sign.equals(SCISSORS) && sign2.equals(PAPER) || 
                 sign.equals(PAPER) && sign2.equals(ROCK);
