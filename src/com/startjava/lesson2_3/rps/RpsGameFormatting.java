@@ -58,14 +58,15 @@ public class RpsGameFormatting {
     }
 
     public static void defineWinner(String name, String sign, String name2, String sign2) {
-        boolean isSign1Equal = sign.equals(ROCK) && sign2.equals(SCISSORS) ||
-                sign.equals(SCISSORS) && sign2.equals(PAPER) || 
-                sign.equals(PAPER) && sign2.equals(ROCK);
-
+        
         if (sign.equals(sign2)) {
             System.out.println("Победила дружба");
             return;
         }
+
+        boolean isSign1Equal = sign.equals(ROCK) && sign2.equals(SCISSORS) ||
+                sign.equals(SCISSORS) && sign2.equals(PAPER) || 
+                sign.equals(PAPER) && sign2.equals(ROCK);
 
         if (isSign1Equal) {
             System.out.println("Игрок по имени " + name +  " Победил");
