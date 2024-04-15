@@ -76,24 +76,23 @@ public class ArrayTheme {
 
         System.out.println("\n6 Игра виселица");
         Scanner scanner = new Scanner(System.in);
-        char[] word = {'J', 'a', 'v', 's'};
+        char[] word = {'J', 'a', 'v', 'a'};
         char[] wordCopy = new char[4];
         int countTry = 7;
-        
+
         while (countTry > 0) {
             System.out.println("У вас " + countTry + " Попыток");
             System.out.print("Введите символ ");
             char sign = scanner.nextLine().charAt(0);
-
-            for (int i = 0; i < wordCopy.length; i++) {
+            for (int i = 0; i < word.length; i++) {
                 if (sign == word[i]) {
                     wordCopy[i] = word[i];
                     countTry++;
                     break;
                 }
-                for (int j = i + 1; j < wordCopy.length; j++) {
-                    if (word[i] == word[j]) {
-                        wordCopy[i] = word[j];
+                for (int j = i + 1; j < word.length; j++) {
+                    if (wordCopy[i] == word[j]) {
+                        wordCopy[j] = word[j];
                         break;
                     }
                 }
