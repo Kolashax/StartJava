@@ -5,9 +5,21 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class ArrayTheme {
+    private static final String[] WORDS = {"JAVA", "PYTHON", "CLOUD", "COMPUTER", "PROGRAMMING"};
+    private static final int MAX_ATTEMPTS = 6;
+    private static final String[] HANGMAN = {
+            "  +---+\n  |   |\n      |\n      |\n      |\n      |\n=========",
+            "  +---+\n  |   |\n  O   |\n      |\n      |\n      |\n=========",
+            "  +---+\n  |   |\n  O   |\n  |   |\n      |\n      |\n=========",
+            "  +---+\n  |   |\n  O   |\n /|   |\n      |\n      |\n=========",
+            "  +---+\n  |   |\n  O   |\n /|\\  |\n      |\n      |\n=========",
+            "  +---+\n  |   |\n  O   |\n /|\\  |\n /    |\n      |\n=========",
+            "  +---+\n  |   |\n  O   |\n /|\\  |\n / \\  |\n      |\n========="
+    };
+
+
 
     public static void main(String[] args) {
-
         System.out.println("1 Вычисление факториала");
         int[] numbers = new int[9];
         int factorial = 1;
@@ -75,40 +87,79 @@ public class ArrayTheme {
         }
 
         System.out.println("\n6 Игра виселица");
-        Scanner scanner = new Scanner(System.in);
-        char[] word = {'J', 'a', 'v', 'a'};
-        char[] wordCopy = new char[4];
-        int countTry = 7;
+        Scanner console = new Scanner(System.in);
+        String[] words = {"JAVA", "PYTHON", "CLOUD", "COMPUTER", "PROGRAMMING"};
+        String guessWord = words[random.nextInt(words.length)];
+        boolean[] guessLetters = new boolean[guessWord.length()];
+        StringBuilder wrongLetters = new StringBuilder();
+        int attempts = 7;
 
-        while (countTry > 0) {
-            System.out.println("У вас " + countTry + " Попыток");
-            System.out.print("Введите символ ");
-            char sign = scanner.nextLine().charAt(0);
-            for (int i = 0; i < word.length; i++) {
-                if (sign == word[i]) {
-                    wordCopy[i] = word[i];
-                    countTry++;
-                    break;
+        while (attempts > 0) {
+            System.out.println();
+            if (attempts > 0) {
+                System.out.println(HANGMAN[7 - attempts]);
+            }
+            System.out.println("Кол во попыток " + attempts);
+            System.out.println("Загаданое слово " + getMaskedWord(guessWord,guessLetters));
+            System.out.println("Загаданные буквы " + getGuessLetters(guessWord,guessLetters));
+            System.out.println("Ошибочные буквы " + wrongLetters);
+            System.out.print("Введите букву ");
+            char letter = console.nextLine().toUpperCase().charAt(0);
+            if (!Character.isLetter(letter)) {
+                System.out.println("Введите корректный тип данных");
+                continue;
+            }
+            int index = guessWord.indexOf(letter);
+            if (index != -1) {
+                while (index != -1) {
+                    guessLetters[index] = true;
+                    index = guessWord.indexOf(letter,index + 1);
                 }
-                for (int j = i + 1; j < word.length; j++) {
-                    if (wordCopy[i] == word[j]) {
-                        wordCopy[j] = word[j];
-                        break;
-                    }
+                if (getGuessWord(guessLetters)) {
+                    System.out.println("Вы выиграли слово " + guessWord);
+                    return;
+                }
+            } else {
+                if (wrongLetters.indexOf(String.valueOf(letter)) == -1) {
+                    wrongLetters.append(letter);
+                    attempts--;
+                } else {
+                    System.out.println("Буква уже была загаданна");
                 }
             }
-            boolean isArraysEquals = Arrays.equals(word, wordCopy);
-            if (isArraysEquals) {
-                break;
-            }
-            countTry--;
         }
+        System.out.println("К сожалению, вы проиграли, слово было " + guessWord);
+    }
+    public static String getMaskedWord(String guessWord, boolean[] guessLetters) {
+        StringBuilder masked = new StringBuilder();
+        for (int i = 0; i < guessWord.length(); i++) {
+            if (guessLetters[i]) {
+                masked.append(guessWord.charAt(i));
+            } else {
+                masked.append("_");
+            }
+            masked.append(" ");
+        }
+        return masked.toString();
+    }
 
+    public static String getGuessLetters(String guessWord, boolean[] guessLetters) {
+        StringBuilder guess = new StringBuilder();
+        for (int i = 0; i < guessWord.length(); i++) {
+            if (guessLetters[i]) {
+                guess.append(guessWord.charAt(i));
+                guess.append(" ");
+            }
+        }
+        return guess.toString();
+    }
+
+    public static boolean getGuessWord(boolean[] guessLetters) {
+        for (boolean letter : guessLetters) {
+            if (!letter) {
+                return false;
+            }
+        }
+        return true;
     }
 }
-
-
-
-
-
-
